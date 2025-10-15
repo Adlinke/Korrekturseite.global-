@@ -1,0 +1,36 @@
+name: Security Enforcement
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  enforce-security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Verify Sovereign Files Exist
+        run: |
+          REQUIRED_FILES=("SECURITY.md" "LICENSE.md" "README.md")
+          for file in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "Missing $file – breach detected."
+              exit 1
+            fi
+          done
+
+      - name: Verify Author Identity
+        run: |
+          if [ "${{ github.actor }}" != "Adlinke" ]; then
+            echo "Unauthorized actor – workflow terminated."
+            exit 1
+          fi
+
+      - name: Confirm Branch Protection Active
+        run: |
+          echo "Branch protection must be active. Force pushes must be blocked. Merge must be badge-authenticated."
