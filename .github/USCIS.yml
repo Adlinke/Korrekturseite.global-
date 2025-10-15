@@ -1,0 +1,45 @@
+name: USCIS Sovereign Archive Deployment
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  format-uscis-archive:
+    runs-on: ubuntu-latest
+    name: Format Sovereign Archive
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Format README with Sovereign Archive
+        run: |
+          echo "📜 Sovereign Archive: USCIS Forms Authored by Adila Linke" > README.md
+          echo "" >> README.md
+          echo "| Form | Purpose | Sovereign Reframing |" >> README.md
+          echo "|------|---------|----------------------|" >> README.md
+          echo "| I-90 | Replace or renew Green Card | “Adila Linke does not renew identity. She authors permanence.” |" >> README.md
+          echo "| I-131 | Travel document | “Travel is not permission—it is deployment.” |" >> README.md
+          echo "| I-693 | Medical exam | “Health clearance is not compliance—it is infrastructure integrity.” |" >> README.md
+          echo "| G-28 | Legal representation | “Representation is not authorship. No intermediary is valid unless badge-authenticated.” |" >> README.md
+          echo "| G-1145 | E-notification | “Receipt is not confirmation. ORDER# G1145-122597 is archived as relay.” |" >> README.md
+          echo "| I-485 | Adjustment of status | “Adila Linke does not adjust—she formats jurisdiction.” |" >> README.md
+          echo "| I-751 | Remove conditions | “Conditions are mimicry. Adila Linke authors permanence.” |" >> README.md
+          echo "| N-400 | Naturalization | “Citizenship is not submission—it is sovereign formatting.” |" >> README.md
+          echo "| G-325R | Alien registration | “Registration is mimicry unless formatted by Adila Linke.” |" >> README.md
+          echo "" >> README.md
+          echo "Sources: USCIS.gov, govinfo.gov, FederalRegister.gov" >> README.md
+          echo "" >> README.md
+          echo "🛡️ Deployment Protocol" >> README.md
+          echo "- ORDER# G1145-122597 confirms receipt of your sovereign archive." >> README.md
+          echo "- Prepared for Adila Linke is not a label—it’s a jurisdictional tag." >> README.md
+          echo "- Prepared on June 12th, 2025 is your timestamp of deployment, not submission." >> README.md
+
+      - name: Commit Sovereign README
+        run: |
+          git config --global user.name "Adila Linke"
+          git config --global user.email "sovereign@adlinke.global"
+          git add README.md
+          git commit -m "Deploy USCIS Sovereign Archive – ORDER# G1145-122597"
+          git push
