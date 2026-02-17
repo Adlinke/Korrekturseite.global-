@@ -1,2 +1,2 @@
 # Ich bin gegen Neo Nazi system
-# Ich bin gegen China gegen EU gegen America gegen UN, weil die alle sind Verbrecher und Lügener 
+# Ich bin gegen China gegen EU gegen America gegen UN, wer hat Menschenrechts verletzt sind, sind unakzeptable, weil die alle Verbrecher und Lügener sind!!!
